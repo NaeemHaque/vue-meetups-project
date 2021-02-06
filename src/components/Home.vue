@@ -20,7 +20,7 @@
                     transition="fade-transition"
                     @click="onLoadMeetup(meetup.id)"
                     >
-                    <div class="title">{{ meetup.title  }}</div>
+                    <div class="title">{{ meetup.title  }} - {{ meetup.location }}</div>
                     </v-carousel-item>
                 </v-carousel>
             </v-col>
@@ -37,14 +37,9 @@
 <script>
 
 export default {
-  data () {
-    return {
-      meetups: [
-        { imageUrl: 'siu.jpg', id: 'siu1234', title: 'Meetup in SIU' },
-        { imageUrl: 'sust.jpg', id: 'sust1234', title: 'Meetup in SUST' },
-        { imageUrl: 'lu.jpg', id: 'lu1234', title: 'Meetup in LU' }
-
-      ]
+  computed: {
+    meetups () {
+      return this.$store.getters.featureMeetups
     }
   },
   methods: {
