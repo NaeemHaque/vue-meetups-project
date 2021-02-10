@@ -10,7 +10,7 @@
                         </v-col>
                         <v-col xs="5" md="7" sm="9">
                             <v-card-title>{{ meetup.title }}</v-card-title>
-                            <v-card-subtitle>{{ meetup.date }}</v-card-subtitle>
+                            <v-card-subtitle>{{ meetup.date | date }}</v-card-subtitle>
                             <v-card-actions>
                                 <v-btn depressed class="green accent-3" small :to="'/meetups/'+ meetup.id" >
                                     <v-icon left>arrow_forward</v-icon>

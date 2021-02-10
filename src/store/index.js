@@ -6,9 +6,9 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     loadMeetups: [
-      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', id: 'siu1234', title: 'Career Development', date: '08 February 2021', location: 'Sylhet International University' },
-      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', id: 'sdshd2', date: '14 February 2021', location: 'Shahjalal University of Science and Technology' },
-      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg', id: 'lu1234', title: 'Youth Leadership ', date: '26 March 2021', location: 'Leading University' }
+      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/house.jpg', id: 'siu1234', title: 'Career Development', date: new Date(), location: 'Sylhet International University', description: 'Hello there. Here is nice description of your meetup' },
+      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/road.jpg', id: 'sdshd2', title: 'Researh Career', date: new Date(), location: 'Shahjalal University of Science and Technology', description: 'Hello there. Here is nice description of your meetup' },
+      { imageUrl: 'https://cdn.vuetifyjs.com/images/cards/docks.jpg', id: 'lu1234', title: 'Youth Leadership ', date: new Date(), location: 'Leading University', description: 'Hello there. Here is nice description of your meetup' }
     ],
     users: {
       id: 'asvstdfs',
@@ -16,8 +16,23 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    createMeetup (state, payload) {
+      state.loadMeetups.push(payload)
+    }
   },
   actions: {
+    createMeetup ({ commit }, payload) {
+      const meetup = {
+        title: payload.title,
+        location: payload.location,
+        imageUrl: payload.imageUrl,
+        description: payload.description,
+        date: payload.date,
+        id: 'bdfhuag213'
+      }
+      // reach out to firebase and store it
+      commit('createMeetup', meetup)
+    }
   },
   modules: {
   },
