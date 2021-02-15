@@ -10,6 +10,14 @@
           </v-list-item-action>
           <v-list-item-content>{{ item.title }}</v-list-item-content>
         </v-list-item>
+
+        <v-list-item  v-if="userIsAuthenticated" @click="onLogout">
+          <v-list-item-action>
+            <v-icon>exit_to_app</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>Logout</v-list-item-content>
+        </v-list-item>
+
       </v-list>
     </v-navigation-drawer>
 
@@ -29,6 +37,11 @@
       <v-btn depressed class="hidden-xs-only purple lighten-1" v-for="item in menuItems" :key="item.title" :to="item.link">
         <v-icon left>{{ item.icon }}</v-icon>
         {{ item.title }}
+      </v-btn>
+
+      <v-btn depressed class="hidden-xs-only purple lighten-1"  v-if="userIsAuthenticated" @click="onLogout">
+        <v-icon left>exit_to_app</v-icon>
+        Logout
       </v-btn>
 
       <v-toolbar-items>
@@ -51,15 +64,34 @@ export default {
   components: {
   },
 
-  data: () => ({
-    sideNav: false,
-    menuItems: [
-      { icon: 'people', title: 'View Meetups', link: '/meetups' },
-      { icon: 'room', title: 'Organize Meetup', link: '/meetup/new' },
-      { icon: 'person', title: 'Profile', link: '/profie' },
-      { icon: 'face', title: 'Sign up', link: '/signup' },
-      { icon: 'lock_open', title: 'Sign in', link: '/Signin' }
-    ]
-  })
+  data () {
+    return {
+      sideNav: false
+    }
+  },
+  computed: {
+    menuItems () {
+      var menuItems = [
+        { icon: 'face', title: 'Sign up', link: '/signup' },
+        { icon: 'lock_open', title: 'Sign in', link: '/Signin' }
+      ]
+      if (this.userIsAuthenticated) {
+        menuItems = [
+          { icon: 'people', title: 'View Meetups', link: '/meetups' },
+          { icon: 'room', title: 'Organize Meetup', link: '/meetup/new' },
+          { icon: 'person', title: 'Profile', link: '/profie' }
+        ]
+      }
+      return menuItems
+    },
+    userIsAuthenticated () {
+      return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+    }
+  },
+  methods: {
+    onLogout () {
+      this.$store.dispatch('logout')
+    }
+  }
 }
 </script>

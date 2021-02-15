@@ -26,12 +26,14 @@
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-text-field v-model="imageUrl" name="imageUrl" label="Image URL*" id="imageUrl" required></v-text-field>
+                        <!-- <v-text-field v-model="imageUrl" name="imageUrl" label="Image URL*" id="imageUrl" required></v-text-field> -->
+                        <v-btn depressed small raised @click="onPickFile" class="purple lighten-1 white--text">Upload Image</v-btn>
+                        <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked">
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-img :src="imageUrl" height="250px"></v-img>
+                        <v-img :src="imageUrl" height="250" v-if="this.image"></v-img>
                     </v-col>
                 </v-row>
                  <v-row>
@@ -42,18 +44,16 @@
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
                         <v-date-picker v-model="date" color="purple lighten-1 white--text"></v-date-picker>
-                        <p> {{ date }}</p>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
                         <v-time-picker ampm-in-title v-model="time" color="purple lighten-1 white--text"></v-time-picker>
-                        <p> {{ time }}</p>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-btn depressed class="purple lighten-1 white--text pa-2" type="submit">Create Meetup</v-btn>
+                        <v-btn depressed class="purple lighten-1 white--text pa-2" type="submit" :disabled="!formIsVallid">Create Meetup</v-btn>
                     </v-col>
                 </v-row>
             </v-form>
@@ -71,7 +71,8 @@ export default {
       description: '',
       imageUrl: '',
       date: '',
-      time: ''
+      time: '',
+      image: null
     }
   },
   computed: {
@@ -95,15 +96,37 @@ export default {
   },
   methods: {
     onCreate () {
+      if (!this.formIsVallid) {
+        return
+      }
+      if (!this.image) {
+        return
+      }
       const meetupData = {
         title: this.title,
         location: this.location,
-        imageUrl: this.imageUrl,
+        image: this.image,
         description: this.description,
         date: this.submittableDateTime
       }
       this.$store.dispatch('createMeetup', meetupData)
       this.$router.push('/meetups')
+    },
+    onPickFile () {
+      this.$refs.fileInput.click()
+    },
+    onFilePicked (event) {
+      const files = event.target.files
+      var filename = files[0].name
+      if (filename.lastIndexOf('.') <= 0) {
+        return alert('Please add a valid file')
+      }
+      const filereader = new FileReader()
+      filereader.addEventListener('load', () => {
+        this.imageUrl = filereader.result
+      })
+      filereader.readAsDataURL(files[0])
+      this.image = files[0]
     }
   }
 }

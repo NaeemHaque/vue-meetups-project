@@ -7,11 +7,23 @@
             <v-col cols="12" xs="12" sm="6"  class="text-center">
                 <v-btn large route to="/meetup/new" class=" purple lighten-1 white--text">Organize Meetup</v-btn>
             </v-col>
-        </v-row
->
+        </v-row>
+
+        <v-row>
+            <v-col xs="12" class="text-center">
+                <v-progress-circular
+                 indeterminate
+                 color="primary"
+                 :width="7"
+                 :size="70"
+                 v-if="loading"
+                 ></v-progress-circular>
+            </v-col>
+        </v-row>
+
         <v-row wrap>
             <v-col xs="12">
-                <v-carousel cycle height="450" style="cursor: pointer;">
+                <v-carousel cycle height="450" style="cursor: pointer;" v-if="!loading">
                     <v-carousel-item
                     v-for="(meetup) in meetups"
                     :key="meetup.id"
@@ -40,6 +52,9 @@ export default {
   computed: {
     meetups () {
       return this.$store.getters.featureMeetups
+    },
+    loading () {
+      return this.$store.getters.loading
     }
   },
   methods: {
