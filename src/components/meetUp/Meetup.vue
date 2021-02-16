@@ -32,8 +32,10 @@
                 <v-card-text class="text-justify">{{ meetup.description }}</v-card-text>
                 <v-card-actions>
                     <v-spacer></v-spacer>
-                    <!-- <v-btn depressed class="purple lighten-1 white--text pa-2">Register</v-btn> -->
-                    <app-register-dialog :meetupId="meetup.id"></app-register-dialog>
+                    <app-register-dialog
+                    :meetupId="meetup.id"
+                    v-if="userIsAuthenticated && !userIsCreator"
+                    ></app-register-dialog>
                 </v-card-actions>
             </v-card>
         </v-col>
