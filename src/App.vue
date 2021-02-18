@@ -78,8 +78,8 @@ export default {
       if (this.userIsAuthenticated) {
         menuItems = [
           { icon: 'people', title: 'View Meetups', link: '/meetups' },
-          { icon: 'room', title: 'Organize Meetup', link: '/meetup/new' },
-          { icon: 'person', title: 'Profile', link: '/profie' }
+          { icon: 'room', title: 'Organize Meetup', link: '/meetup/new' }
+          // { icon: 'person', title: 'Profile', link: '/profie' }
         ]
       }
       return menuItems

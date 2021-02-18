@@ -5,10 +5,10 @@
             <v-card class="cyan accent-2">
                 <v-container fluid>
                     <v-row>
-                        <v-col xs="5" md="3" sm="4">
+                        <v-col xs="6" md="5" sm="6">
                             <v-img :src="meetup.imageUrl" height="130px"></v-img>
                         </v-col>
-                        <v-col xs="5" md="7" sm="9">
+                        <v-col xs="6" md="7" sm="6">
                             <v-card-title>{{ meetup.title }}</v-card-title>
                             <v-card-subtitle>{{ meetup.date | date }}</v-card-subtitle>
                             <v-card-actions>
