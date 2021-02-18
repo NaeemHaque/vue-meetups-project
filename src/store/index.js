@@ -130,6 +130,7 @@ export default new Vuex.Store({
       }
       let imageUrl
       let key
+      let ext
       firebase.database().ref('meetups').push(meetup)
         .then(data => {
           key = data.key
@@ -137,21 +138,24 @@ export default new Vuex.Store({
         })
         .then(key => {
           const filename = payload.image.name
-          const ext = filename.slice(filename.lastIndexOf('.'))
-          // return firebase.storage().ref('meetups/' + key + '.' + ext).put(payload.image)
-          return firebase.storage().ref().child('meetups/' + key + '.' + ext).put(payload.image)
-        })
-        .then(fileData => {
-          imageUrl = fileData.getMetadata.getDownloadURls(0)
-          // imageUrl = fileData.metadata.downloadURLs(0)
-          return firebase.database.ref('meetups').child(key).update({ imageUrl: imageUrl })
+          ext = filename.slice(filename.lastIndexOf('.'))
+          return firebase.storage().ref('meetups/').child(key + '.' + ext).put(payload.image)
         })
         .then(() => {
-          commit('createMeetup', {
-            ...meetup,
-            imageUrl: imageUrl,
-            id: key
-          })
+          imageUrl = firebase.storage().ref('meetups/').child(key + '.' + ext).getDownloadURL(0)
+            .then((imageUrl) => {
+              return firebase.database().ref('meetups').child(key).update({ imageUrl: imageUrl })
+            })
+            .then(() => {
+              commit('createMeetup', {
+                ...meetup,
+                imageUrl: imageUrl,
+                id: key
+              })
+            })
+            .catch(error => {
+              console.log(error)
+            })
         })
         .catch(error => {
           console.log(error)

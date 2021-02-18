@@ -18,7 +18,7 @@
     </v-row>
     <v-row>
         <v-col xs="12">
-            <v-form @submit.prevent="onCreate">
+            <v-form @submit.prevent="onCreateMeetup">
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
                         <v-text-field v-model="location" name="location" label="Location*" id="location" required></v-text-field>
@@ -27,7 +27,7 @@
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
                         <!-- <v-text-field v-model="imageUrl" name="imageUrl" label="Image URL*" id="imageUrl" required></v-text-field> -->
-                        <v-btn depressed small raised @click="onPickFile" class="purple lighten-1 white--text">Upload Image</v-btn>
+                        <v-btn depressed small raised @click="onPickFile" class="blue darken-1 white--text">Upload Image</v-btn>
                         <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked">
                     </v-col>
                 </v-row>
@@ -43,17 +43,17 @@
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-date-picker v-model="date" color="purple lighten-1 white--text"></v-date-picker>
+                        <v-date-picker v-model="date" color="blue darken-1 white--text"></v-date-picker>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-time-picker ampm-in-title v-model="time" color="purple lighten-1 white--text"></v-time-picker>
+                        <v-time-picker ampm-in-title v-model="time" color="blue darken-1 white--text"></v-time-picker>
                     </v-col>
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <v-btn depressed class="purple lighten-1 white--text pa-2" type="submit" :disabled="!formIsVallid">Create Meetup</v-btn>
+                        <v-btn depressed class="blue darken-1 white--text" type="submit" :disabled="!formIsVallid">Create Meetup</v-btn>
                     </v-col>
                 </v-row>
             </v-form>
@@ -95,7 +95,7 @@ export default {
     }
   },
   methods: {
-    onCreate () {
+    onCreateMeetup () {
       if (!this.formIsVallid) {
         return
       }

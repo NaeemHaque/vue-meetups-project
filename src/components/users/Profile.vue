@@ -1,5 +1,5 @@
 <template>
 <div>
-    <p>this is Profile page.</p>
+    <p>Upcoming feature. Here you can see your registered meetup</p>
 </div>
 </template>

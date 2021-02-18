@@ -2,10 +2,10 @@
     <v-container>
         <v-row wrap>
             <v-col cols="12" xs="12" sm="6" class="text-center">
-                <v-btn large router to="/meetups" class=" purple lighten-1 white--text">Explore Meetups</v-btn>
+                <v-btn large router to="/meetups" class=" blue darken-1 white--text">Explore Meetups</v-btn>
             </v-col>
             <v-col cols="12" xs="12" sm="6"  class="text-center">
-                <v-btn large route to="/meetup/new" class=" purple lighten-1 white--text">Organize Meetup</v-btn>
+                <v-btn large route to="/meetup/new" class=" blue darken-1 white--text">Organize Meetup</v-btn>
             </v-col>
         </v-row>
 
@@ -40,8 +40,9 @@
 
         <v-row wrap>
             <v-col cols="12" xs="12" class="text-center">
-                <p>Join Our Awsomwe Meetup!</p>
+                <p class="headline">Join Our Awsomwe Meetup!</p>
             </v-col>
+            <v-col class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti laboriosam magni exercitationem quaerat sapiente natus dolor doloribus architecto in eum excepturi asperiores quibusdam tempora sequi, eligendi unde neque tempore temporibus voluptatum, iusto vel enim! Ullam iusto illum aliquam nulla aspernatur nihil consequuntur temporibus voluptatibus. Sed ut quos mollitia hic odit nulla modi repellat, non omnis, aliquam quae in molestiae. Ducimus, nihil. Quam enim vitae officia veritatis laboriosam voluptatem possimus dolor nihil, repellendus amet deleniti a assumenda odio, perferendis maxime placeat aliquid accusamus voluptas facere, dolorem ipsum velit recusandae debitis ut. Natus eius dolore tempora quas in? Vero dolorem quod fugiat.</v-col>
         </v-row>
     </v-container>
 </template>

@@ -11,11 +11,7 @@
                 <v-card-text>
                     <v-container>
                         <form @submit.prevent="onSignup">
-                            <v-row>
-                                <v-col xs="12">
-                                    <v-text-field name="name" label="Name" id="name" v-model="name" type="text" required></v-text-field>
-                                </v-col>
-                            </v-row>
+
                             <v-row>
                                 <v-col xs="12">
                                      <v-text-field name="email" label="Email" id="email" v-model="email" type="email" required></v-text-field>

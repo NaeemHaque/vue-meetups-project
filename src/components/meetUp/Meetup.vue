@@ -17,7 +17,7 @@
         <v-col xs="12">
             <v-card>
 
-                <v-card-title class="blue--text lighten-1">{{ meetup.title }}
+                <v-card-title class="cyan accent-2">{{ meetup.title }}
                   <template v-if="userIsCreator">
                     <v-spacer></v-spacer>
                     <app-edit-meetup :meetup="meetup"></app-edit-meetup>

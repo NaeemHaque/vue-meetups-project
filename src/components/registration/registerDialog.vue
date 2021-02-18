@@ -1,7 +1,7 @@
 <template>
   <v-dialog width="350px" persistent v-model="registerDialog">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn  depressed small accent v-bind="attrs" v-on="on" class="purple lighten-1 white--text pa-2">
+        <v-btn  depressed small accent v-bind="attrs" v-on="on" class="cyan accent-2 pa-2">
           {{ userIsRegistered ? 'Unregister' : 'Register' }}
         </v-btn>
       </template>

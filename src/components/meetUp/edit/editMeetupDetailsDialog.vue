@@ -1,7 +1,7 @@
 <template>
     <v-dialog width="350px" persistent v-model="editDialog">
         <template v-slot:activator="{ on, attrs }">
-            <v-btn fab depressed small accent v-bind="attrs" v-on="on" class="purple lighten-1 white--text">
+            <v-btn fab depressed small accent v-bind="attrs" v-on="on" class="cyan accent-2">
                 <v-icon>edit</v-icon>
             </v-btn>
        </template>
