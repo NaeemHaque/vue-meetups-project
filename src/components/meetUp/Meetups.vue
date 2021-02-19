@@ -6,7 +6,7 @@
                 <v-container fluid>
                     <v-row>
                         <v-col xs="6" md="5" sm="6">
-                            <v-img :src="meetup.imageUrl" height="130px"></v-img>
+                            <v-img :src="meetup.imageUrl" height="auto"></v-img>
                         </v-col>
                         <v-col xs="6" md="7" sm="6">
                             <v-card-title>{{ meetup.title }}</v-card-title>

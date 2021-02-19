@@ -24,7 +24,7 @@
                   </template>
                 </v-card-title>
 
-                <v-img :src=" meetup.imageUrl " height="400px"></v-img>
+                <v-img :src=" meetup.imageUrl " height="auto" class="img"></v-img>
                 <v-card-title class="blue--text lighten-1">
                   <div>{{ meetup.date | date }} - {{ meetup.location }}.</div>
                   <!-- <div><app-edit-date :meetup="meetup" v-if="userIsCreator"></app-edit-date></div> -->

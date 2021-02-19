@@ -26,7 +26,6 @@
                 </v-row>
                 <v-row>
                     <v-col xs="12" sm="6" offset-sm="3">
-                        <!-- <v-text-field v-model="imageUrl" name="imageUrl" label="Image URL*" id="imageUrl" required></v-text-field> -->
                         <v-btn depressed small raised @click="onPickFile" class="blue darken-1 white--text">Upload Image</v-btn>
                         <input type="file" style="display: none" ref="fileInput" accept="image/*" @change="onFilePicked">
                     </v-col>
@@ -90,7 +89,6 @@ export default {
         date.setHours(this.time.getHours())
         date.setMinutes(this.time.getMinutes())
       }
-      console.log(date)
       return date
     }
   },

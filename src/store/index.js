@@ -141,26 +141,41 @@ export default new Vuex.Store({
           ext = filename.slice(filename.lastIndexOf('.'))
           return firebase.storage().ref('meetups/').child(key + '.' + ext).put(payload.image)
         })
-        .then(() => {
-          imageUrl = firebase.storage().ref('meetups/').child(key + '.' + ext).getDownloadURL(0)
-            .then((imageUrl) => {
-              return firebase.database().ref('meetups').child(key).update({ imageUrl: imageUrl })
-            })
-            .then(() => {
-              commit('createMeetup', {
-                ...meetup,
-                imageUrl: imageUrl,
-                id: key
-              })
-            })
-            .catch(error => {
-              console.log(error)
-            })
+        .then(filedata => {
+          var imagePath = filedata.metadata.fullPath
+          // creating ref to our image file and get the url
+          return firebase.storage().ref().child(imagePath).getDownloadURL()
         })
+        .then(url => {
+          imageUrl = url
+          return firebase.database().ref('meetups').child(key).update({ imageUrl: imageUrl })
+        })
+        .then(() => {
+          commit('createMeetup', {
+            ...meetup,
+            imageUrl: imageUrl,
+            id: key
+          })
+        })
+        // .then(() => {
+        //   imageUrl = firebase.storage().ref('meetups/').child(key + '.' + ext).getDownloadURL(0)
+        //     .then((imageUrl) => {
+        //       return firebase.database().ref('meetups').child(key).update({ imageUrl: imageUrl })
+        //     })
+        //     .then(() => {
+        //       commit('createMeetup', {
+        //         ...meetup,
+        //         imageUrl: imageUrl,
+        //         id: key
+        //       })
+        //     })
+        //     .catch(error => {
+        //       console.log(error)
+        //     })
+        // })
         .catch(error => {
           console.log(error)
         })
-      // reach out to firebase and store it
     },
     updateMeetupData ({ commit }, payload) {
       commit('setLoading', true)
