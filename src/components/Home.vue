@@ -40,7 +40,7 @@
 
         <v-row wrap>
             <v-col cols="12" xs="12" class="text-center">
-                <p class="headline">Join Our Awsomwe Meetup!</p>
+                <p class="headline">Join Our Awesome Meetups!</p>
             </v-col>
             <v-col class="text-justify">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga distinctio assumenda exercitationem, nemo quasi eius modi nulla temporibus, sit ex explicabo sunt quisquam laborum excepturi adipisci magni non, reiciendis perferendis magnam provident est. Nesciunt id molestiae placeat nemo officiis facere quas! Molestiae tempore accusantium atque id repudiandae esse, ullam animi.</v-col>
         </v-row>

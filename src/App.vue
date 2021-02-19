@@ -53,6 +53,8 @@
       <router-view></router-view>
     </v-main>
 
+    <app-footer/>
+
   </v-app>
 </template>
 

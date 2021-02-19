@@ -9,12 +9,14 @@ import AlertCmp from './components/shared/alert'
 import EditMeetup from './components/meetUp/edit/editMeetupDetailsDialog'
 import EditMeetupDate from './components/meetUp/edit/editMeetupDateDialog'
 import RegisterDialog from './components/registration/registerDialog'
+import Footer from './components/Footer'
 
 Vue.config.productionTip = false
 Vue.component('app-alert', AlertCmp)
 Vue.component('app-edit-meetup', EditMeetup)
 Vue.component('app-edit-date', EditMeetupDate)
 Vue.component('app-register-dialog', RegisterDialog)
+Vue.component('app-footer', Footer)
 
 Vue.filter('date', DateFilter)
 
